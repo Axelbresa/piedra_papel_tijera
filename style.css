@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box; /* Aplicar el modelo de caja border-box a todos los elementos */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50vh;
+}
+
+.option {
+    margin: 0 10px;
+    cursor: pointer;
+    width: 200px;
+    height: 200px;
+    position: relative; /* Agregar posición relativa para posicionar el texto */
+    overflow: hidden; /* Ocultar el texto que se mostrará al hacer hover */
+    margin-left: 80px;
+
+}
+
+.option img {
+    width: 100%; /* Establecer el ancho al 100% del contenedor */
+    height: auto; /* Mantener la proporción de la imagen */
+    border: 5px solid black;
+    border-radius: 10px; /* Bordes redondeados para la imagen */
+
+}
+
+.option:hover {
+    transform: scale(1.1); /* Agrandar el contenedor al hacer hover */
+}
+
+.option .name {
+    position: absolute; /* Posicionar el texto de manera absoluta */
+    top: 50%; /* Posicionar en el centro verticalmente */
+    left: 50%; /* Posicionar en el centro horizontalmente */
+    transform: translate(-50%, -50%); /* Centrar el texto */
+    background-color: rgba(0, 0, 0, 0.7); /* Color de fondo semi-transparente */
+    color: white; /* Color del texto */
+    padding: 5px 10px; /* Espaciado interno del texto */
+    border-radius: 5px; /* Bordes redondeados para el texto */
+    visibility: hidden; /* Ocultar el texto inicialmente */
+    opacity: 0; /* Hacer el texto completamente transparente */
+    transition: visibility 0s, opacity 0.3s ease; /* Agregar transición para mostrar el texto */
+}
+
+.option:hover .name {
+    visibility: visible; /* Mostrar el texto al hacer hover */
+    opacity: 1; /* Hacer el texto completamente visible */
+}
+
+body {
+    background-color: rgb(34, 107, 255); /* Color de fondo para el cuerpo de la página */
+}
+
+#resultado {
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 12);
+    padding: 0px;
+    justify-content: flex-end;
+  }
+  
+  /* Estilos para cada resultado */
+  #resultado p {
+    margin-left: 100px;
+    display: inline-block;
+    border: 2px solid #333;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+  }
+  
+  /* boton */
+  #btnJugarDeNuevo {
+    /* Estilos previos al efecto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #b7ff02;
+    background-color: #000000; /* Color base del botón */
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative; /* Importante para posicionar elementos dentro del botón */
+    overflow: hidden; /* Ocultar el desbordamiento del elemento interno */
+    left: 47%; /* Colocar en la mitad horizontalmente */
+    top: 50%; /* Colocar en la mitad verticalmente */
+  }
+
+  /* Efecto de luz o brillo */
+  #btnJugarDeNuevo::after {
+    content: ''; /* Contenido vacío necesario para el pseudoelemento */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 0, 0, 0.662) 0%, rgba(255, 255, 255, 0) 80%); /* Gradiente radial para el brillo */
+    transform: translate(-50%, -50%) rotate(45deg);
+    opacity: 0;
+    pointer-events: none; /* Evitar que el pseudoelemento sea clickeable */
+    transition: all 0.5s ease-in-out;
+  }
+  
+  /* Animación del efecto de luz */
+  #btnJugarDeNuevo:hover::after {
+    transform: translate(-50%, -50%) rotate(225deg);
+    opacity: 1;
+  }
+  
+  /* Efecto de "víbora" con sombras */
+  #btnJugarDeNuevo::before {
+    content: ''; /* Contenido vacío necesario para el pseudoelemento */
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)); /* Gradiente lineal para el efecto de "víbora" */
+    animation: moveSnake 2s linear infinite; /* Animación del efecto de "víbora" */
+  }
+  
+  /* Animación de movimiento de la "víbora" */
+  @keyframes moveSnake {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(150%);
+    }
+  }
+  
